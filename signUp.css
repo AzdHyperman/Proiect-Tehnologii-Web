@@ -1,0 +1,77 @@
+input.textInput{
+    box-sizing: content-box;
+    width: 10em;
+    height: 2em;
+    padding: 0.3%;
+    border-style: outset;
+    background-origin: padding-box;
+    border-color: crimson;
+    border-radius: 1em;
+    margin: 0.5em;
+    box-shadow: 0.5em 1em darkcyan;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+h3.title{
+    text-align: center;
+    color: blueviolet;
+    text-decoration-line: overline;
+    text-decoration-style: wavy;
+    text-decoration-color: darkgoldenrod;
+    
+}
+
+/*div.stf{
+    text-align: center;
+}
+
+div.stf input{
+    margin:0 auto;
+}*/
+
+form.signUpForm {
+    border-top: olive;
+}
+form.signUpForm div{
+    text-align:center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    border-color: darkgray;
+
+}
+form.signUpForm label{
+    color: olive;
+    background-color: white;
+    text-align: justify;
+    font: normal 1.5vw Arial; 
+}
+form.signUpForm input[type=text],input[type=password],input[type=email]{
+    margin:0 auto;
+    width: 15em;
+    height: 2em;
+    padding: 0.3%;
+    border-style: outset;
+    background-origin: padding-box;
+    border-color: crimson;
+    border-radius: 1em;
+    margin: 0.5em;
+    box-shadow: 3px 5px darkcyan;
+    box-sizing: content-box;
+    text-align: center;
+}
+
+form.signUpForm input[type=date]{
+    border-color:crimson;
+    border-radius: 1em;
+    margin:0.5em;
+
+}
+form.signUpForm input[type=radio]{
+    margin: 1.5em;
+    margin-right:0.5em;
+    
+}
