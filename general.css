@@ -1,0 +1,107 @@
+body{
+    background-image: url("copertaM2.jpg");
+    background-size: 100em;
+}
+
+/*----BUTTONS----*/
+button[type=menu]{
+    background-color: #e1e289;
+    font: normal 10px Arial;
+    border-radius: 3em;
+    border-width: 0.5em;
+    border-color: #99AA38;
+    text-align: center;
+    margin:0 auto;
+}
+
+button[type=menu]:hover{
+    background-color: #d5d833 ;
+}
+
+/*-------------------LINKS---------------------*/
+a:link,a:visited,a:active{
+    text-decoration: none;
+    font: normal 20px  Arial;
+    color: #14591D;
+}
+
+li a {
+    display: block;
+    padding: 10px;
+    font: normal 20px Arial;
+  }
+
+  /*-----------------Navigation Bar-----------*/
+  li {
+    float: left;
+    width:25%;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }
+  
+
+  /*----------------Text Styles-------------*/
+  h1.title{
+    text-align:center;
+    color:#14591D;
+    font: bold 28px Arial;
+    border-color:#e1e289;
+    border-style: outset;
+    border-radius: 1em;
+    width: 5em;
+    box-align: center;
+    margin:20px auto;
+    background-color: #eee0ba7a;
+
+}
+
+h2.subtitle{
+    text-align:center;
+    color: #14591D;
+    font: normal 20px Arial;
+    background-color: #eee0ba7a;
+    border-color: transparent;
+    border-radius: 1em;
+    width: fit-content;
+    margin: 0px auto;
+
+}
+
+.navbar{
+width: 100%;
+  background-color: transparent;
+  overflow: auto;
+}
+
+.navbar button{
+  float: left;
+  color: white;
+  text-decoration: none;
+  width: fit-content; 
+  text-align: center;
+  background-color: #e1e289;
+  font: normal 10px Arial;
+  border-radius: 3em;
+  border-width: 0.5em;
+  border-color: #99AA38;
+}
+
+.navbar button:hover {
+    background-color: #d5d833;
+}
+.navbar a.active {
+        background-color: #4CAF50;
+      }
+.navbar a {
+    display: block;
+    padding: 10px;
+    font: normal 20px Arial;
+    text-align: center;
+  }
+
+

@@ -1,36 +1,43 @@
-
-
-h3.title{
-    text-align:center;
-    color:#14591D;
-    font: bold 28px Arial;
-    border-color:#e1e289;
-    border-style: outset;
-    border-radius: 1em;
-    width: 5em;
-    box-align: center;
-    margin:20px auto;
-}
-
-p.subtitle{
-    text-align:center;
-    color: #14591D;
-    font: normal 20px Arial;
+form.signUpForm{
+    box-sizing: content-box;
+    width:300px;
     margin:0 auto;
+    border-radius: 1em;
+    border-color: transparent;
+    background-color: #eee0ba7a;
+    box-align: center;
 }
 
 form.signUpForm div{
     text-align:center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin:1em;
     border-radius: 0.5em;
 }
-form.signUpForm label{
-    color: #99AA38;
-    background-color: white;
+form.signUpForm label{    
+    color: #14591D;
+    background-color:/*#ac7c7ccc;*/ transparent;
+    font: normal 28px Arial;
+    margin:0px auto;
+    border:transparent;
+    border-radius: 1em;
+    width: 5em;
+
+    /*text-shadow:-1px 1px 1px white,
+				  1px 1px 1px white,
+				  1px -1px 0 white,
+				  -1px -1px 0 white;*/
+}
+
+form.signUpForm input[type=radio]+label{
+    /*textul dintr-un radio-input*/
+    color: #14591D;
+    background-color: transparent;
     text-align: justify;
     font: normal 20px Arial;
+    border:transparent;
+    border-radius: 1em;
 }
+
 form.signUpForm input[type=text],input[type=password],input[type=email]{
     margin:0 auto;
     width: 15em;
@@ -50,8 +57,7 @@ form.signUpForm input[type=date]{
     border-color:#e1e289;
     border-radius: 1em;
     border-style: outset;
-    padding:0.3%;
-    margin:0 auto;
+    margin:0.5em;
     width:10em;
     height:2em;
     box-shadow: 3px 5px #99AA38;
@@ -59,41 +65,37 @@ form.signUpForm input[type=date]{
     text-align: center;
 }
 
-form.signUpForm input[type='radio'] {
-    display: none;
+form.signUpForm input[type=radio] {
+    display: none;    
   }
-  
-form.signUpForm  label:before {
-    content: " ";
-    display: inline-block;
+
+
+ 
+form.signUpForm input[type=radio]+label:before{
+    border-radius: 11px;
+    border: 2px solid #14591D;
+    background-color: transparent;
+    margin: 0 5px 0 0;
     position: relative;
     top: 5px;
-    margin: 0 5px 0 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 11px;
-    border: 2px solid #99AA38;
-    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    content: " ";
+    display: inline-block;
 }
   
-form.signUpForm input[type='radio']:checked+label:before {
+form.signUpForm input[type=radio]:checked + label:before {
     position: relative;
-    border: 2px outset orange;
+    border: 2px outset #14591D;
     border-radius: 11px;
     width: 20px;
     height: 20px;
     top: 5px;
     content: " ";
     display: inline-block;
-    background-color: orangered;
+    background-color: #99AA38;
 } 
 
-form.signUpForm h4{
-    color: #14591D;
-    background-color: white;
-    font: normal 28px Arial;
-    margin:0px;
-}
  
 
 
