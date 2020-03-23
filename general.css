@@ -1,0 +1,45 @@
+/*------------------- COLORS ------------------*/
+ /* 
+  #e1e289 
+  #99AA38
+  #d5d833
+  #14591D
+  #eee0ba7a
+ */
+
+
+body{
+    background-image: url("copertaM2.jpg");
+    background-size: 80em;
+}
+
+
+  /*----------------Text Styles-------------*/
+  h1.title{
+    text-align:center;
+    color:#14591D;
+    font: bold 28px Arial;
+    border-color:#e1e289;
+    border-style: outset;
+    border-radius: 1em;
+    width: 5em; /* specific latimea spatiului in care vreau sa se afle scris titlul; daca titlul e mai lung, trece pe un nou rand*/
+    box-align: center;
+    margin: 2em auto; /*2em specifica marginea sus/jos auto ia margine egala stg/drp -pentru a centra un obiect pe mijlocul paginii*/
+    background-color: #eee0ba7a;
+
+}
+
+h2.subtitle{
+    text-align:center;
+    color: #14591D;
+    font: bold 20px Arial;
+    background-color: #eee0ba8a;
+    border-color: #eee0ba7a;
+    border-radius: 1em;
+    width: fit-content;
+    margin: 2em auto;
+
+}
+
+ 
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="signUp.css">
+    <link rel="stylesheet" type="text/css" href="signUp700.css">
+    <link rel="stylesheet" type="text/css" href="site.css">
+    <link rel="stylesheet" type="text/css" href="general.css">
+    <link rel="stylesheet" type="text/css" href="general700.css">
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+    <link rel="stylesheet" type="text/css" href="navbar700.css">
+
+    <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <div class="navbar">
+        <a class="#" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="#" href="#"><i class="fa fa-newspaper-o"></i> Reviews</a>
+        <a class="#" href="#"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+        <a class="#" href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+        <a class="#" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a class="active" href="signUp.html"><i class="fa fa-user-plus" ></i> Sign Up</a>
+    </div>
+
+    <h1 class="title">Sign Up</h1>
+    <h2 class="subtitle">and let the adventure begin!</h2>
+    <form class="signUpForm">
+        <div>
+            <label for="firstName"></label>
+                <input type="text" id="firstName" name="firstName" placeholder="First name" required="true">
+        </div>
+        <div>
+            <label for="lastName"></label>
+                <input  type="text" id="lastName" name="lastName" placeholder="Last name" required="true">
+        </div>
+        <div>
+            <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Email" required="true">
+        </div>
+        <div>
+            <label for="password"></label>
+                <input type="password" id="password" name="password" placeholder="Password" required="true">
+        </div>
+        <div>
+           <label>Birthday</label> <br> 
+                <input type="date" name="birthday" required="true">
+        
+        </div>
+        <div>
+            <label>Gender</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            
+        </div>
+        <div>
+        <button class="animatedLine1 button5" type="submit">Sign Up</button>  
+        </div>      
+    </form>
+</body>
+</html>
