@@ -33,8 +33,7 @@ li a {
 
   /*-----------------Navigation Bar-----------*/
   li {
-    float: left;
-    width:25%;
+    width:20%;
   }
   
   ul {
@@ -72,10 +71,18 @@ h2.subtitle{
 
 }
 
-.navbar{
-width: 100%;
-  background-color: transparent;
+.navbar ul{
+  list-style-type: none;
+  width: 100%;
+  background-color: #e1e289;
   overflow: auto;
+  border-color: transparent;
+  border-radius: 2em;
+  padding:0%;
+  margin:0%;
+  position: fixed;
+  box-sizing: content-box;
+  
 }
 
 .navbar button{
@@ -93,6 +100,13 @@ width: 100%;
 
 .navbar button:hover {
     background-color: #d5d833;
+}
+
+.navbar li{
+  width:17%;
+  border-radius: 2em;
+  border-color: #14591D;
+  border-style: outset;
 }
 .navbar a.active {
         background-color: #4CAF50;
