@@ -90,3 +90,12 @@ div.made{
     margin-left: 7em;
 }  
 
+div.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(28, 133, 19);
+    color: white;
+    text-align: center;
+}
