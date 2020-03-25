@@ -3,37 +3,70 @@
 <head>
 <title></title>
 <link rel="stylesheet" type="text/css" href="home.css">
+<link rel="stylesheet" type="text/css" href="./style/navbar.css">
+<link rel="stylesheet" type="text/css" href="./style/navbar700.css">
+<!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
 
 <body>
     <!-- Login/Register/Button to homepage -->
-    <div class="topper">
-      <p>MyBooksList</p>
-    <form name="sign_in" id="sign_in"  accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="7RZDYGDnLd3PV6vQVz1dNZ2+g3bUlMm0+U9THFw6hqNJbeiNc8TofFKgbCcyveUkYcWHw2fgYgHupGfDYQq6mQ==">
-
-        <div class="formBox">
-          <input id="userSignInFormEmail" type="email" name="user[email]" aria-label="Email address" placeholder="Email address">
-          <br>
-          <input type="checkbox" id="remember_me" name="remember_me" checked=""><label for="remember_me" class="greyText">Remember me</label>
-        </div>
+    <div class="navbar">
+      <a class="#" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a class="#" href="#"><i class="fa fa-newspaper-o"></i> Reviews</a>
+      <a class="#" href="#"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+      <a class="#" href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+      <a class="#" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+      <a class="active" href="signUp.html"><i class="fa fa-user-plus" ></i> Sign Up</a>
+      <!-- A round icon with user profile and a little menu of login and logout -->
+      <input type="text" class="searchButton">
+      <a class="UserProfile" position="right" href="#"><i class="fa fa-user-plus" ></i> Username</a>
       
-        <div class="formBox">
-          <div style="position:relative">
-            <input value="" aria-label="Password" placeholder="Password" type="password" name="user[password]" id="user_password">
-            <br>
-            <a class="greyText" id="userForgotPassword" rel="nofollow" href="/user/forgot_password">Forgot it?</a>
-          </div>
-        </div>
-      
-        <div class="formBox">
-          <input type="submit" value="Sign in" class="gr-button gr-button--dark">
-          <input type="hidden" name="n" value="186337">
-        </div>
+  </div>
+  <!-- Adding images of books trending most popular -->
+  <h1>Welcome to BookReviewer</h1>
+  <div class ="topBooks">
+    <h2>Trending Books Spring 2020</h2>
+    <ul class="List-trending">
+      <p ><img src="./bookImages/book1.jpg" alt="book1"></p>
+      <p><img src="./bookImages/book1.jpg" alt="book1"></p>
+      <p><img src="./bookImages/book1.jpg" alt="book1"></p>
+      <p><img src="./bookImages/book1.jpg" alt="book1"></p>
+      <p><img src="./bookImages/book1.jpg" alt="book1"></p>
+    </ul>
+  </div>
 
-    </form>
-    </div>
-    
+  <div class ="top-books">
+    <h2>Most Recent Reviews</h2>
+    <ul class="List-review">
+      <p>review1</p>
+      <p>review2</p>
+      <p>review3</p>
+      <p>click for more</p>
+      
+    </ul>
+  </div>
+  <div class="most-popular">
+    <h2>Most Popular Books</h2>
+    <ul class="List-popular">
+    <p>book1</p>
+      <p>book2</p>
+      <p>book3</p>
+      <p>book4</p>
+      <p>book5</p>
+    </ul>
+  </div>
+
+  <div class ="bottom">
+    <ul class="between">
+    <h3>Company</h3>
+    <h3>Contact Us</h3>
+    <h3>Made by</h3>
+    <p>BookReviewer.net(not online yet) is a property of BookReviewer, LLC. ©2020 All Rights Reserved.</p>
+  </ul>
+  </div>
+   
     
     
 </body>

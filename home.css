@@ -1,17 +1,34 @@
-.topper
-{   border-style: solid;
-    box-sizing: border-box;
-    
-    border-color: blueviolet;
-    border-width: 3px;
-    height: 100px;
-    background-color: blue;
-    opacity:60%;
-    
+
+/*css for divs*/
+body
+{
+    background-color:#14591D;
 }
-.formBox{
-    
-   position: relative;
-   fill-opacity: 100%;
+div.topBooks
+{border-style:solid;
+    box-sizing: border-box;
+    border-width: 2px;
+  
+    border-color: tomato;
+    width: 900px;
+    height: 350px;
+
+}
+.List-trending
+{
+    display:flex;
+    justify-content:space-between;
+    flex-direction: row;
+    margin-left: -1em;
+    margin-right: 1em;
+}
+/*titluri*/
+h2{
+    text-align: center;
+}
+img
+{
+    width: 150px;
+    height: 200px;
 
 }
