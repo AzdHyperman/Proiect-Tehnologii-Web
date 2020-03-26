@@ -3,6 +3,7 @@
 body
 {
     background-color:#14591D;
+    color:whitesmoke;
 }
 div.topBooks
 {border-style:solid;
@@ -17,7 +18,7 @@ div.topBooks
 .List-trending
 {
     display:flex;
-    justify-content:space-between;
+    justify-content:space-around;
     flex-direction: row;
     margin-left: -1em;
     margin-right: 1em;
@@ -31,4 +32,23 @@ img
     width: 150px;
     height: 200px;
 
+}
+.bottom
+{
+border-style: solid;
+border-color: #99AA38;
+background-color:#99AA38 ;
+}
+
+.between
+{
+    display:flex;
+    justify-content:space-around;
+    flex-direction: row;
+    margin-left: -1em;
+    margin-right: 1em;
+}
+.Company
+{
+    text-align: center;
 }
