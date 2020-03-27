@@ -1,0 +1,39 @@
+/*------------------- COLORS ------------------*/
+ /* 
+  #e1e289 galben deschis
+  #99AA38 verde maslina
+  #d5d833 galben-verziu pt hover link-uri
+  #14591D verde inchis-brad
+  #eee0ba7a maro-transparent
+ */
+
+.articleContainer{
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    background-color: #99AA38;
+    margin:0;
+    
+}
+
+.articleContainer .articlePreview{
+    background-color: #e1e289;
+    width: 30vw;
+    height: 15vw;
+    margin: 1em;
+    border-radius: 1em;
+    /*padding-right: 1em;*/
+}
+
+.articlePreview img{
+    background-color: #eee0ba7a;
+    margin: 1em;
+    width:200px;
+    height:170px;
+    float:left;
+}
+
+.articlePreview h3, h3 h4{
+    float:left;
+}
