@@ -7,33 +7,65 @@
   #eee0ba7a maro-transparent
  */
 
+body{
+    background-color: #99AA38;
+}
+
+aside{
+    display: flex;
+    float:right;
+    position:sticky;
+    top:0;
+    max-height: fit-content;
+    width:fit-content;
+    max-width:30%;
+}
+
 .articleContainer{
     display:flex;
     justify-content:space-around;
     align-items:flex-start;
     flex-wrap:wrap;
-    background-color: #99AA38;
     margin:0;
     
 }
 
 .articleContainer .articlePreview{
     background-color: #e1e289;
-    width: 30vw;
-    height: 15vw;
-    margin: 1em;
+    width: 30em;
+    height: 15em;
+    margin: 0.5em;
     border-radius: 1em;
-    /*padding-right: 1em;*/
+    padding:0.5em;
+    overflow:auto;
 }
 
 .articlePreview img{
     background-color: #eee0ba7a;
-    margin: 1em;
-    width:200px;
-    height:170px;
+    margin: 0.5em;
+    width:7em;
+    height:6em;
     float:left;
 }
 
-.articlePreview h3, h3 h4{
+.articlePreview h3 p,h2 p{
     float:left;
+    margin:10px;
+    overflow-wrap: break-word;    
+}
+.articlePreview footer{
+    float:left;
+}
+
+.asideTemplate{
+    padding:0.5em;
+    border-radius:1em;
+    background-color: #eee0ba7a;
+    margin:0.5em;
+    overflow-wrap: break-word;
+
+}
+
+a{
+    text-decoration: none;
 }
