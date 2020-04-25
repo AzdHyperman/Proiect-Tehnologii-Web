@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="./style/navbar700.css">
 <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
 
     </head>
 
@@ -20,7 +22,7 @@
       <a class="#" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
       <a class="active" href="signUp.html"><i class="fa fa-user-plus" ></i> Sign Up</a>
       <!-- A round icon with user profile and a little menu of login and logout -->
-      <input type="text" class="searchButton">
+      <a class="searchButton"><i class="fa fa-fw fa-search"></i><input class="textBorder" type="text" name="" placeholder="type to search"></a>
       <a class="UserProfile" position="right" href="#"><i class="fa fa-user-plus" ></i> Username</a>
       
   </div>
@@ -29,7 +31,7 @@
   <div class ="topBooks">
     <h2>Trending Books Spring 2020</h2>
     <ul class="List-trending">
-      <p ><img src="./bookImages/book1.jpg" alt="book1"></p>
+      <p><img src="./bookImages/book1.jpg" alt="book1"></p>
       <p><img src="./bookImages/book1.jpg" alt="book1"></p>
       <p><img src="./bookImages/book1.jpg" alt="book1"></p>
       <p><img src="./bookImages/book1.jpg" alt="book1"></p>
@@ -37,35 +39,77 @@
     </ul>
   </div>
 
-  <div class ="top-books">
+  <div class ="recent-reviews">
     <h2>Most Recent Reviews</h2>
     <ul class="List-review">
-      <p>review1</p>
+      <p class="border">review1</p>
       <p>review2</p>
       <p>review3</p>
-      <p>click for more</p>
+      <span id="more">
+      <p>review2</p>
+      <p>review3</p>
+      </span>
+      <p><button type="ReadMoreBtn" id="read" onclick="read()">click for more</button></p>
       
     </ul>
   </div>
   <div class="most-popular">
     <h2>Most Popular Books</h2>
     <ul class="List-popular">
-    <p>book1</p>
+      <p>book1</p>
       <p>book2</p>
       <p>book3</p>
-      <p>book4</p>
-      <p>book5</p>
+      <span id="more">
+        <p>book4</p>
+        <p>book5</p>
+      </span>
+      <p><button type="ReadMoreBtn" id="read" onclick="read()">click for more</button></p>
+    <script type="text/javascript">
+    var i=0;
+    function read()
+    {
+if(!i){
+document.getElementById("more").style.
+display="inline";
+document.getElementById("read").innerHTML="Click for less";
+   i=1;
+    }
+    else 
+    {
+      document.getElementById("more").style.
+display="none";
+document.getElementById("read").innerHTML="Click for more";
+i=0;
+    }
+    }
+    
+    
+    </script>
     </ul>
   </div>
 
   <div class ="bottom">
     <ul class="between">
-    <h3>Company</h3>
-    <h3>Contact Us</h3>
-    <h3>Made by</h3>
+    <li><h3>Company</h3>
+    <p>About us</p>
+    <p>Careers</p>
+    <p>Terms</p>
+    <p>Privacy</p>
+    <p>Help</p>
+    </li>
+    <li><h3>Contact Us</h3>
+      <p>Facebook</p>
+      <p>Instagram</p>
+      <p>Contact</p>
+    </li>
+    <li><h3>Made by</h3>
+      <p>Boghiu Georgiana Viorica</p>
+      <p>Taga Stefan Razvan</p>
+      <p>Vasilescu Andrei</p>
+    </li>
     
   </ul>
-  <p class="Company">BookReviewer.net(not online yet) is a property of BookReviewer, LLC. ©2020 All Rights Reserved.</p>
+  <p class="Copyright">BookReviewer.net(not online yet) is a property of BookReviewer, LLC. ©2020 All Rights Reserved.</p>
   
   </div>
    
