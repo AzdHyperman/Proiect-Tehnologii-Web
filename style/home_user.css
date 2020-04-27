@@ -1,0 +1,25 @@
+h4,h5{
+    text-align: center;
+}
+
+.articleContainer .articlePreview{
+    height:fit-content;
+    width:25em;
+}
+
+.articlePreview img{
+    background-color: #eee0ba7a;
+    margin: 0px auto;
+    width:70%;
+    height:60%;
+    float: unset;
+    align-self: center;
+    display: flex;
+}
+
+p{
+    font:normal 1em Arial;
+}
+
+
+
