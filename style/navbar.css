@@ -13,7 +13,7 @@
     background-color: #e0e289da;
     overflow: auto; /* specific ce se intampla daca bara are overflow, adica elementele ei nu incap in width*/
     position: sticky; /*lipesc bara de navigare cand dau scroll si ajung la ea*/
-    top:0%; /*lipesc bara de navigare de top cu o diferenta intre bara si top de 0px*/
+    top:0px; /*lipesc bara de navigare de top cu o diferenta intre bara si top de 0px*/
   }
   
   /* Navbar links */

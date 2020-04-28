@@ -16,7 +16,7 @@ aside{
     float:right;
     position:sticky;
     top:0;
-    max-height: fit-content;
+    max-height: scroll;
     width:fit-content;
     max-width:30%;
 }
@@ -30,8 +30,10 @@ aside{
 }
 
 .asideTemplate #title{
-    font: bolder 1.4em Arial;
+    font: bolder 1em Arial;
     color: #14591D;
+    margin:0 auto;
+    text-align: center;
 }
 
 .asideTemplate .articlePreview{
@@ -45,7 +47,7 @@ aside{
 
 .asideTemplate header{
     margin:0 auto;
-    font-family: Arial;
+    font:normal 1em Arial;
 }
 
 .asideTemplate h3{
@@ -54,7 +56,7 @@ aside{
 }
 
 .asideTemplate p{
-    font: normal 0.8em Arial;
+    font: normal 0.7em Arial;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -122,3 +124,8 @@ h4{
 h5{
     margin: 0px auto;
 }
+
+#rating{
+    font:normal 1em Arial;
+}
+

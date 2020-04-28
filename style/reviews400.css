@@ -1,6 +1,47 @@
 @media screen and (max-width: 400px){
    aside{
+       /*display: none;*/
+       text-align: center;
+   }
+
+   .asideTemplate .articlePreview{
+       padding:0.5em;
+   }
+
+   .asideTemplate p{
        display: none;
    }
 
+   .asideTemplate header{
+       font:normal 0.7em Arial;
+   }
+
+   #rating{
+       font:normal 0.7em Arial;
+   }
+
+   .articlePreview img{
+    background-color: #eee0ba7a;
+    margin: 0px auto;
+    width:70%;
+    height:60%;
+    float: unset;
+    align-self: center;
+    display: flex;
+}
+
+.articleContainer .articlePreview p{
+    font:normal 0.9em Arial;
+}
+
+
+h2{
+    text-align: center;
+    font:normal 1.3em Arial;
+}
+
+h4{
+    text-align: center;
+    font:bold 0.9em Arial;
+}
 }
