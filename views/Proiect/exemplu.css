@@ -85,18 +85,7 @@ div.made{
     float: left;
     margin-top: 2em;
     margin-left: 7em;
-} 
-
-button.LogOut{
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 12px;
-    border: 2px solid rgb(20, 20, 20);
-    text-decoration: none;
-    box-shadow: 0 4px #999;
-    transition-duration: 0.4s;
-    text-align: center;
-}
+}  
 
 .footer {
     position: fixed;
@@ -106,6 +95,5 @@ button.LogOut{
     background-color: rgb(24, 221, 123);
     color: white;
     text-align: center;
-    
 }
 
