@@ -1,9 +1,17 @@
-
+*
+{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color :#14591D;
+}
 /*css for divs*/
 body
 {
     background-color:#14591D;
     color:whitesmoke;
+    
 
 }
 .searchButton
@@ -91,11 +99,16 @@ img
     height: 180px;
 
 }
-.bottom
+.footer
 {
-border-style: solid;
-border-color: #99AA38;
 background-color:#99AA38 ;
+position: static;
+left: 0;
+bottom: 0;
+width: 100%;
+height: 250px;
+color: white;
+text-align: center;
 }
 
 .between
@@ -106,15 +119,24 @@ background-color:#99AA38 ;
     margin-left: -1em;
     margin-right: 1em;
 }
-li
+.between li
 {
     text-decoration: none;
     display:flex;
+    justify-content: space-around;
     flex-direction:column;
+   margin-top:2em;
+   margin-bottom: 4em;
+    
 
 }
+
 
 .Copyright
 {
     text-align: center;
+}
+@media screen and (max-width:700px)
+{
+
 }
