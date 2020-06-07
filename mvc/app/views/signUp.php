@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="../style/signUp.css">
-    <link rel="stylesheet" type="text/css" href="../style/signUp700.css">
-    <link rel="stylesheet" type="text/css" href="../style/buttons.css">
-    <link rel="stylesheet" type="text/css" href="../style/general.css">
-    <link rel="stylesheet" type="text/css" href="../style/general700.css">
-    <link rel="stylesheet" type="text/css" href="../style/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../style/navbar700.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/signUp700.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/general.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/general700.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css">
 
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,30 +31,34 @@
     <main>
     <h1 class="title">Sign Up</h1>
     <h2 class="subtitle">and let the adventure begin!</h2>
-    <form class="signUpForm">
+    <form class="signUpForm" method="POST" action="../app/routes/signUp.php">
         <div>
-            <label for="firstName"></label>
+            <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Choose your username" required>
+        </div>
+        <div>
+            <label for="firstName">First Name</label>
                 <input type="text" id="firstName" name="firstName" placeholder="First name" required>
         </div>
         <div>
-            <label for="lastName"></label>
+            <label for="lastName">Last Name</label>
                 <input  type="text" id="lastName" name="lastName" placeholder="Last name" required>
         </div>
         <div>
-            <label for="email"></label>
+            <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
         <div>
-            <label for="password"></label>
+            <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Password" required>
         </div>
         <div>
-           <label>Birthday</label> <br> 
+           <label for="birthday">Birthday</label><br> 
                 <input type="date" name="birthday" required>
         
         </div>
         <div>
-            <label>Gender</label><br>
+            <label for="gender">Gender</label><br>
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label>
                 <input type="radio" id="female" name="gender" value="female">
@@ -64,7 +68,7 @@
             
         </div>
         <div>
-        <button class="animatedLine1 button5" type="submit">Sign Up</button>  
+        <input class="animatedLine1 button5" type="submit" id="user_sign" name="user_sign" value="Sign Up">
         </div>      
     </form>
 </main>

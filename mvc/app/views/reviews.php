@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+<?php header("Content-Type: html");?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews</title>
-    <link rel="stylesheet" type="text/css" href="../style/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../style/navbar700.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css">
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../style/reviews.css">
-    <link rel="stylesheet" type="text/css" href="../style/reviews400.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/reviews.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/reviews400.css">
 </head>
 <body>
     <header>
@@ -24,42 +25,48 @@
 
     <main>
 
-        <label for="search"></label>
-        <input id="search" type="text" placeholder="Search">
+        <label for="search" ></label>
+        <input id="search" type="text" placeholder="Search" name="search">
 
         <div>
         <label id="organizer"> Order by </label>
 
         <label for="category">Category</label>
         <select id="category">
-            <option value="all">-</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Drama">Drama</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Autobioghaphy">Autobiography</option>
-            <option value="Horror">Horror</option>
-            <option value="Mystery">Mystery</option>
+        <?php
+            // foreach($data["genres"] as $genre){
+            //     echo "<option value=\"".$genre->name."\">".$genre->name."</option>";
+            // }
+            ?>
         </select>
 
         <label for="author">Author</label>
         <select id="author">
-            <option value="all">-</option>
+            <!-- <option value="all">-</option>
             <option value="Emil Garleanu">Emil Garleanu</option>
             <option value="Irina Binder">Irina Binder</option>
             <option value="J.K.Rowling">J.K. Rowling</option>
             <option value="Nora Roberts">Nora Roberts</option>
             <option value="Alexander Pushkin">Alexander Pushkin</option>
             <option value="Agatha Christie">Agatha Christie</option>
-            <option value="Stephen King">Stephen King</option>
+            <option value="Stephen King">Stephen King</option> -->
+            <?php
+            print_r($data->authors);
+            foreach($data->authors as $author){
+                echo "<option value=\"".$author->name."\">" . $author->name . "</option>";
+            }
+            ?>
         </select>
 
         <label for="publishedBy">Published by</label>
         <select id="publichedBy">
-            <option value="all">-</option>
-            <option value="Paralela 45">Paralela 45</option>
-            <option value="Polirom">Polirom</option>
-            <option value="TIMPUL">TIMPUL</option>
+        <?php
+        $html="";
+            foreach($data->publishingHouses as $ph){
+                $html=$html."<option value=\"".$ph->name."\">".$ph->name."</option>";
+            }
+            echo $html;
+            ?>
         </select>
 
         <label for="year">Year</label>
