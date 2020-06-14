@@ -1,5 +1,12 @@
+
 <!DOCTYPE html>
-<?php header("Content-Type: html");?>
+<?php header("Content-Type: html"); 
+require_once (__DIR__."/../controllers/ReviewController.php");
+require_once (__DIR__."/../models/Book.php");
+$contr = new ReviewController();
+if($data === null)
+    $data = $contr->prepPage();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,82 +18,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../public/styles/reviews.css">
     <link rel="stylesheet" type="text/css" href="../public/styles/reviews400.css">
+    
 </head>
 <body>
     <header>
         <div class="navbar">
-            <a class="#" href="home.html"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a class="active" href="reviews.html"><i class="fa fa-newspaper-o"></i> Reviews</a>
-            <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-            <a class="#" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-            <a class="#" href="signUp.html"><i class="fa fa-user-plus" ></i> Sign Up</a>
+            <a class="#" href="home.php"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a class="active" href="ReviewController"><i class="fa fa-newspaper-o"></i> Reviews</a>
+            <a class="#" href="BookController"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+            <a class="#" href="home.php"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
     </header>
 
     <main>
-
+        <header>
+        <!-- mai am nevoie??? -->
         <label for="search" ></label>
         <input id="search" type="text" placeholder="Search" name="search">
 
-        <div>
-        <label id="organizer"> Order by </label>
+        
+        <form method="GET">
+            <label > Filter by book </label><br>
 
-        <label for="category">Category</label>
-        <select id="category">
-        <?php
-            // foreach($data["genres"] as $genre){
-            //     echo "<option value=\"".$genre->name."\">".$genre->name."</option>";
-            // }
-            ?>
-        </select>
-
-        <label for="author">Author</label>
-        <select id="author">
-            <!-- <option value="all">-</option>
-            <option value="Emil Garleanu">Emil Garleanu</option>
-            <option value="Irina Binder">Irina Binder</option>
-            <option value="J.K.Rowling">J.K. Rowling</option>
-            <option value="Nora Roberts">Nora Roberts</option>
-            <option value="Alexander Pushkin">Alexander Pushkin</option>
-            <option value="Agatha Christie">Agatha Christie</option>
-            <option value="Stephen King">Stephen King</option> -->
-            <?php
-            print_r($data->authors);
-            foreach($data->authors as $author){
-                echo "<option value=\"".$author->name."\">" . $author->name . "</option>";
-            }
-            ?>
-        </select>
-
-        <label for="publishedBy">Published by</label>
-        <select id="publichedBy">
-        <?php
-        $html="";
-            foreach($data->publishingHouses as $ph){
-                $html=$html."<option value=\"".$ph->name."\">".$ph->name."</option>";
-            }
-            echo $html;
-            ?>
-        </select>
-
-        <label for="year">Year</label>
-        <select id="year">
-            <option value="all">-</option>
-            <option value="1990">1990</option>
-            <option value="1995">1995</option>
-            <option value="1998">1998</option>
-            <option value="2000">2000</option>
-            <option value="2006">2006</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2012">2012</option>
+            <label for="book_title">Title</label>
+            <input id="book_title" name="book_title" type="text" placeholder="book title...">
             
-        </select>
 
-        <label for="reviewedBy">Reviewed by user:</label>
-        <input id="reviewedBy" type="text">
-        </div>
+            
+            <label for="author">Author</label>
+            <select id="author" name="author">
+                <option>-</option>
+                <?php
+                for($i=0;$i<count($data['authors'][0]);$i++){
+                    echo "<option>" . $data['authors'][0][$i]['name'] . "</option>";
+                }
+                ?>
+            </select>
 
+            <label for="publishedBy">Published by</label>
+            <select id="publishedBy" name="publishedBy">
+                <option >-</option>
+                <?php
+                $html="";
+                for($i=0;$i<count($data['publishingHouses'][0]);$i++){
+                        $html=$html."<option>".$data['publishingHouses'][0][$i]['name']."</option>";
+                    }
+                    echo $html;
+                ?>
+            </select>
+
+            <label for="year">Year</label>
+            <select id="year" name="year">
+                <option >-</option>
+                <option value="1990">1990</option>
+                <option value="1995">1995</option>
+                <option value="1998">1998</option>
+                <option value="2000">2000</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2012">2012</option>
+                
+            </select>
+            
+            <br>
+            <label for="reviewedBy"> Reviewed by </label>
+            <input id="reviewedBy" name="reviewedBy" type="text" placeholder="username">
+
+            <label for="title"> Title </label>
+            <input id="title" name="title" type="text" placeholder="review title...">
+            <!-- <input type="submit" id="find" name="find" value="Find"> -->
+            <button id="find"> Find </button>
+            </form>
+            
+        <div id="container" class="articleContainer">
+            <?php 
+                if($data['reviews'] !== null){
+                    //print_r($data['reviews'][0][0]);
+                    foreach($data['reviews'][0] as $review){
+                        $book = new Book(null,null,null,null,null);
+                        $str = "";
+                        if($review['book_id'] > 0) {
+                            $book->id = $review['book_id'];
+                            $book->getBook();
+                            $str = $book->title.' by '.$book->author->name;
+                        }
+                        else $str="Unknown book";
+
+                        
+                        echo '<div class="articlePreview">';
+                        echo '<img alt="' . $review['title'] . ' image" src="../../mvc/public/images/Books-icon.png" >
+                        <header>
+                            <h2><a href="ReviewController/'.$review['id'].'">'.$review['title'].'</a></h2>
+                            <h4>for ' . $str . '</h4>
+                        </header>
+                        <p>' . substr($review['body'],0,250).'...' . '</p>
+                        <footer>Rating
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            <h4>reviewed by ' . $review['user_id']. '</h4>
+                        </footer>
+                    </div>';
+                    }
+                }
+                else echo '<h2> No reviews found <h2>';
+            ?>
+        </div> 
 
         <aside>
             <div class="asideTemplate">
@@ -131,176 +172,6 @@
             </div>
         </aside>
 
-        <div class="articleContainer">
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png" >
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png" >
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png" >
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div><div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png" >
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png">
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png">
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png">
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-            <div class="articlePreview">
-                <img alt="book image" src="../images/Books-icon.png">
-                <header>
-                    <h2><a href="#">Titlu</a></h2>
-                    <h4>by Name of the author</h4>
-                </header>
-                <p>Lorem ipsum dolor sit amet consectetur, 
-                    adipisicing elit.Culpa, accusamus quo officiis harum 
-                    suscipit, accusantium obcaecati corrupti repellat aspernatur 
-                    laudantium, illo aperiam repellendus nostrum provident rem vitae quasi odio quibusdam.
-                </p>
-                <footer>Rating
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    <h4>reviewed by Username</h4>
-                </footer>
-
-            </div>
-
-        </div>
     </main>
 
 </body>

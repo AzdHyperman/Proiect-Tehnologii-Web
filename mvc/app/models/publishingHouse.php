@@ -98,7 +98,7 @@ class publishingHouse{
          if($stmt->rowCount()>0){
             //users array
             $phs_arr = array(); #date in format json
-            $phs_arr['data'] = array(); #datele din json, fara formatul json
+            //$phs_arr['data'] = array(); #datele din json, fara formatul json
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -113,16 +113,14 @@ class publishingHouse{
                 );
 
                 //push to 'data'
-                array_push($phs_arr['data'], $ph_item);
+                array_push($phs_arr, $ph_item);
             
             }
             //turn to json
-            return json_encode($phs_arr);
+            return $phs_arr;
         }else{
             //no users
-            return json_encode(
-                array('message'=> 'No Publishing Houses found')
-            );
+            return null;
 
         }
     }

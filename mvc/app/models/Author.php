@@ -83,7 +83,7 @@ class Author{
         if($stmt->rowCount()>0){
             //users array
             $authors_arr=array(); #date in format json
-            $authors_arr['data']=array(); #datele din json, fara formatul json
+            //$authors_arr['data']=array(); #datele din json, fara formatul json
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -96,16 +96,14 @@ class Author{
                 );
 
                 //push to 'data'
-                array_push($authors_arr['data'], $author_item);
+                array_push($authors_arr, $author_item);
             
             }
             //turn to json
-            return json_encode($authors_arr);
+            return $authors_arr;
         }else{
             //no users
-            return json_encode(
-                array('message'=> 'No authors found')
-            );
+            return null;
 
         }
 }

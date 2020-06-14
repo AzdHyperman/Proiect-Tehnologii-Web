@@ -161,6 +161,16 @@ class BookController extends Controller{
     #delete
 
 
+    public function filter($filters){
+        // $filters = array();
+        // $filter=array('filter'=>"author_id",'value'=>2);
+        // array_push($filters,$filter);
+        // $filter=array('filter'=>"year",'value'=>2014);
+        // array_push($filters,$filter);
+        $this->setBook(null,null,null,null,null);
+        return $this->book->getBooksBy($filters);
+    }
+
 
 
 }

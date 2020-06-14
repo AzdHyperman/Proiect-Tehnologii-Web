@@ -127,7 +127,7 @@ class Comment{
         if($stmt->rowCount()>0){
             //users array
             $comms_arr = array(); #date in format json
-            $comms_arr['data'] = array(); #datele din json, fara formatul json
+            //$comms_arr['data'] = array(); #datele din json, fara formatul json
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -148,16 +148,14 @@ class Comment{
                 );
 
                 //push to 'data'
-                array_push($comms_arr['data'], $comment_item);
+                array_push($comms_arr, $comment_item);
             
             }
             //turn to json
-            return json_encode($comms_arr);
+            return $comms_arr;
         }else{
             //no users
-            return json_encode(
-                array('message'=> 'No Comments Found')
-            );
+            return null;
 
         }
     }

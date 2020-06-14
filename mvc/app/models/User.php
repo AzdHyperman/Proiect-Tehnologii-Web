@@ -72,16 +72,14 @@ class User{
                 );
 
                 //push to 'data'
-                array_push($users_arr['data'], $user_item);
+                array_push($users_arr, $user_item);
             
             }
             //turn to json
-            return json_encode($users_arr); //return stuff
+            return $users_arr; //return stuff
         }else{
             //no users
-            return json_encode(
-                array('message'=> 'No users found')
-            );
+            return null;
 
         }
     }
@@ -206,7 +204,7 @@ class User{
         if($this->checkUsername($username)===0){
             //create query
             $query= 'update ' .$this->table . ' set username = :username where id = :id';
-            print_r("am ajuns");
+            //print_r("am ajuns");
             //prepare statement
             $stmt = $this->conn->prepare($query);
 

@@ -19,21 +19,23 @@ class ReviewController extends Controller{
     }
 
     public function index(){
+            $this->view('reviews',null);
+    }
+
+    public function prepPage(){
             $a=new Author(null);
             $authors = $a->getAuthors();
-            $authors = json_decode($authors);
-            $authors = $authors->data;
-            //print_r($authors);
-            $ph= new publishingHouse(null,null,null);
-            $publishingHouses= json_decode($ph->getPublishingHouses());
-            $publishingHouses = $publishingHouses->data;
+            //print_r($authors[0]->name);
+            $ph = new publishingHouse(null,null,null);
+            $publishingHouses= $ph->getPublishingHouses();
 
-            $reviews = json_decode($this->getReviews());
-            $reviews->authors=array();
-            $reviews->publishingHouses=array();
-            array_push($reviews->authors,$authors);
-            array_push($reviews->publishingHouses,$publishingHouses);
-            $this->view('reviews',$reviews);
+            $reviews = array();
+            $reviews['reviews']=array($this->getReviews());
+            $reviews['authors']=array($authors);
+            $reviews['publishingHouses']=array($publishingHouses);
+            //array_push($reviews->authors,$authors);
+            //array_push($reviews->publishingHouses,$publishingHouses);
+            return $reviews;
     }
 
     public function getReviews(){
@@ -42,6 +44,7 @@ class ReviewController extends Controller{
                 $this->review = new Review(null,null,null,null,null,null,null);
             }
             return $this->review->getReviews();
+            //$this->view('reviews',null);
         }
         catch (PDOException $e) {
             echo $e->getMessage();
@@ -181,6 +184,11 @@ class ReviewController extends Controller{
         }
         return $this->review->deleteComment($id);
         
+    }
+
+    public function filter($bfilters,$rfilters){
+        $this->setReview(null,null,null,null);
+        return $this->review->filter($bfilters,$rfilters);
     }
 
 

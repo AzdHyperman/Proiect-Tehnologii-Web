@@ -48,13 +48,20 @@ class Review{
         if($stmt->rowCount()>0){
             //users array
             $reviews_arr=array(); #date in format json
-            $reviews_arr['data']=array(); #datele din json, fara formatul json
+            //$reviews_arr['data']=array(); #datele din json, fara formatul json
         
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
                 # in loc sa folosim $row['username'], extract va scoate variabilele
                 #si le vom putea folosi ca $username
-        
+                $user=new User(null,null,null,null,null,null,null);
+                $user->id=$user_id;
+                $user->getUser();
+
+                $book=new Book(null,null,null,null,null);
+                $book->id=$book_id;
+                $book->getBook();
+
                 $review_item = array(
                     'id' => $id,
                     'user_id' => $user_id,
@@ -65,16 +72,14 @@ class Review{
                 );
         
                 //push to 'data'
-                array_push($reviews_arr['data'], $review_item);
+                array_push($reviews_arr, $review_item);
             
             }
             //turn to json
-            return json_encode($reviews_arr);
+            return $reviews_arr;
         }else{
             //no users
-            return json_encode(
-                array('message'=> 'No reviews found')
-            );
+            return null;
         
         }
     }
@@ -366,5 +371,99 @@ class Review{
         return $comment->delete();
     }
 
+    public function filter($bfilters,$rfilters){
+        $database = new Database();
+        $db = $database->connect();
+        $this->conn =$db;
+
+         //create query
+         $query = 'select r.* from ' . $this->table;
+
+         //avem filtre de carti si/sau de review
+         if(count($bfilters)>0){
+            //  $query = $query .' where ' . $filters[0]["filter"] . '=?';
+
+            //  for($i=1;$i<count($filters);$i++){
+            //     $query = $query . ' OR ' . $filters[$i]["filter"] . '=? ';
+            $query = $query . ' r JOIN books b ON r.book_id = b.id WHERE b.'.$bfilters[0]["filter"].'=?';
+            for($i=1;$i<count($bfilters);$i++){
+                $query = $query . ' AND b.'. $bfilters[$i]["filter"]."=?"; 
+            }
+            if(count($rfilters)>0){
+                $query = $query . ' AND r.'.$rfilters[0]["filter"].'=?';
+                
+                for($i=1;$i<count($rfilters);$i++){
+                    $query = $query . ' AND r.'. $rfilters[$i]["filter"]."=?";
+                }
+            }
+         }
+         //avem doar filtre pt review
+         else{
+            if(count($rfilters)>0){
+                $query = $query . ' WHERE '.rfilters[0]["filter"].'=?';
+                
+                for($i=1;$i<count($rfilters);$i++){
+                    $query = $query . ' AND '. $rfilters[$i]["filter"]."=?";
+                }
+            }
+         }
+         
+         //prepare statement
+         $stmt = $this->conn->prepare($query);
+
+         //bind ID to prepared stmt
+        if(count($bfilters)>0){
+            for($i=0;$i<count($bfilters);$i++){
+                $stmt->bindParam($i+1, $bfilters[$i]["value"]);
+            }
+            if(count($rfilters)>0){
+                for($i=count($bfilters);$i<count($rfilters)+count($bfilters);$i++){
+                    $stmt->bindParam($i, $rfilters[$i-count($bfilters)]["value"]);
+                }
+            }
+        }
+        else{
+            if(count($rfilters)>0){
+                for($i=0;$i<count($rfilters);$i++){
+                    $stmt->bindParam($i+1, $rfilters[$i]["value"]);
+                }
+            }
+        }
+
+        $stmt->execute();
+    
+        if($stmt->rowCount()>0){
+            //users array
+            $reviews_arr=array(); #date in format json
+            //$reviews_arr['data']=array(); #datele din json, fara formatul json
+        
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                extract($row); 
+                        
+                $review_item = array(
+                    'id' => $id,
+                    'user_id' => $user_id,
+                    'book_id' => $book_id,
+                    'body' => $body,
+                    'title' => $title,
+                    'posting_date' => $posting_date
+                );
+        
+                //push to 'data'
+                array_push($reviews_arr, $review_item);
+            
+            }
+            //turn to json
+            //print_r($reviews_arr);
+            return $reviews_arr;
+        }else{
+            //no users
+            return null;
+        
+        }
+    }
 
 }
+
+
+

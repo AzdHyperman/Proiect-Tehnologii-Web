@@ -67,6 +67,8 @@ class Book{
         $this->title=$row['title'];
         $this->posted_at=$row['posted_at'];
         $this->getComments();
+        $this->getVotes();
+        $this->getRating();
     }
 
     public function getBooks(){
@@ -85,7 +87,7 @@ class Book{
         if($stmt->rowCount()>0){
             //users array
             $books_arr=array(); #date in format json
-            $books_arr['data']=array(); #datele din json, fara formatul json
+            //$books_arr['data']=array(); #datele din json, fara formatul json
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -110,18 +112,16 @@ class Book{
                 );
 
                 //push to 'data'
-                array_push($books_arr['data'], $book_item);
+                array_push($books_arr, $book_item);
             
             }
             //turn to json
             //echo json_encode($books_arr);
-            return json_encode($books_arr);
+            return $books_arr;
             //return $books_arr;
         }else{
             //no users
-            return json_encode(
-                array('message'=> 'No books found')
-            );
+            return null;
 
         }
     }
@@ -323,5 +323,73 @@ class Book{
     #update partial book
     
 
+    public function getBooksBy($filters){
+        $database = new Database();
+        $db = $database->connect();
+        $this->conn =$db;
+
+        //print_r($filters);
+         //create query
+         $query = 'select * from ' . $this->table;
+
+         if(count($filters)>0){
+             $query = $query .' where ' . $filters[0]["filter"] . '=?';
+
+             for($i=1;$i<count($filters);$i++){
+                $query = $query . ' OR ' . $filters[$i]["filter"] . '=? ';
+            }
+         }
+         
+         //prepare statement
+         $stmt = $this->conn->prepare($query);
+         //bind ID to prepared stmt
+         for($i=0;$i<count($filters);$i++)
+            $stmt->bindParam($i+1, $filters[$i]["value"]);
+        //print_r($stmt);
+         //execute query
+         $stmt->execute();
+     
+        //  $stmt->fetch(PDO::FETCH_ASSOC);
+         
+         if($stmt->rowCount()>0){
+            //users array
+            $books_arr = array(); #date in format json
+            //$books_arr['data'] = array(); #datele din json, fara formatul json
+
+         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row); 
+            # in loc sa folosim $row['username'], extract va scoate variabilele
+            #si le vom putea folosi ca $username
+            $author = new Author(null);
+            $author->id = $author_id;
+            $author->getAuthor();
+
+            $ph = new publishingHouse(null,null,null);
+            $ph->id = $publHouse_id;
+            $ph->getPublishingHouse();
+
+            $book_item = array(
+                'id' => $id,
+                'author_id' => $author,
+                'publHouse_id' => $ph,
+                'year' => $year,
+                'body' => $body,
+                'title' => $title,
+                'posting_date' => $posting_date
+            );
+
+            //push to 'data'
+            array_push($books_arr, $book_item);
+        }
+        //turn to json
+        //echo json_encode($books_arr);
+        //print_r($books_arr);
+        return $books_arr;
+    }else{
+        //no users
+        return null;
+        }
+    }
 
 }
+
