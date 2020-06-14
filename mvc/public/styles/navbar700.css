@@ -1,0 +1,16 @@
+ @media screen and (max-width: 745px) {
+    
+    .navbar{
+      width:fit-content;
+      margin:0 auto;
+      position: sticky; /*lipesc bara de navigare cand dau scroll si ajung la ea*/
+      top:0px; /*lipesc bara de navigare de top cu o diferenta intre bara si top de 0px*/
+    }
+
+    .navbar a {
+      float: none;
+      display: block;
+      padding:3px;
+    }
+  }
+  

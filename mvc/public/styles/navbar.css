@@ -1,0 +1,38 @@
+ /*------------------- COLORS ------------------*/
+ /* 
+  #e1e289 galben deschis
+  #99AA38 verde maslina
+  #d5d833 galben-verziu pt hover link-uri
+  #14591D verde inchis-brad
+  #eee0ba7a maro-transparent
+ */
+
+ 
+ .navbar {
+    width: 100%;
+    background-color: #e0e289da;
+    overflow: auto; /* specific ce se intampla daca bara are overflow, adica elementele ei nu incap in width*/
+    position: sticky; /*lipesc bara de navigare cand dau scroll si ajung la ea*/
+    top:0px; /*lipesc bara de navigare de top cu o diferenta intre bara si top de 0px*/
+  }
+  
+  /* Navbar links */
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: #14591D;
+    text-decoration: none; /*imi scoate textul subliniat si chestiile specifice textului unui link*/
+    font: normal 17px Arial;
+
+  }
+  
+  /* Navbar links on mouse-over */
+  .navbar a:hover {
+    background-color: #d2d45acb;
+  }
+  
+  /* Current/active navbar link */
+  a.active {
+    background-color: #99AA38;
+  }
