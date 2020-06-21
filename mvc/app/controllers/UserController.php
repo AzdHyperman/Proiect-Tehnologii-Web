@@ -20,6 +20,7 @@ class UserController extends Controller{
     public function new(){
         try{
             $this->user->create();
+            $this->view('signUp');
         }
         catch (PDOException $e) {
             echo $e->getMessage();
@@ -29,7 +30,7 @@ class UserController extends Controller{
     }
     
     public function index(){
-        echo 'hello from user controller.'; 
+        $this->view('signUp');
     }
 
     //GET
@@ -61,7 +62,7 @@ class UserController extends Controller{
         $user_arr = array($this->user);
 
         //make json
-        print_r(json_encode($user_arr)); //return cv?
+        echo json_encode($user_arr); //return cv?
         }
         else{
             echo json_encode(
@@ -255,5 +256,22 @@ class UserController extends Controller{
     }
 
 
+    public function login(){
+        $data = json_decode(file_get_contents("php://input"));
+
+        if($this->user === null){
+            $this->setUser(null,null,null,null,null,null,null);
+        }
+
+        if($this->user->login($data->password,$data->username)>0){
+            //echo "ok";
+            return true;
+        }
+        else{
+            //echo "not ok!";
+            return false;
+        }
+
+    }
 
 }

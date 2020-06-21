@@ -36,7 +36,7 @@
                 $html="";
                 foreach($books as $book){
                     $html = $html . "<br><div class='articlePreview'>";
-                    $html = $html . "<a href='#'>";
+                    $html = $html . "<a href='BookController/item/".$book['id']."'>";
                     $html = $html . "<img src='" . __DIR__ . "/../../public/images/Books-icon.png' alt='" . $book['title'] . "' > <br>";
                     $html = $html . "<h4>" . $book['title'] . "</h4>";
                     $html = $html . "<h5>by " . $book['author_id']->name . "</h5>";

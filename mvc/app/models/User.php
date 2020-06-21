@@ -102,7 +102,7 @@ class User{
         if($row){
         //set properties
         $this->username=$row['username'];
-        $this->password = $row['password'];
+        $this->password = null;
         $this->first_name=$row['first_name'];
         $this->last_name=$row['last_name'];
         $this->email=$row['email'];
@@ -369,6 +369,23 @@ class User{
     }
 
     //search stuff
+
+    public function login($password,$username){
+        $database = new Database();
+        $db = $database->connect();
+        $this->conn = $db;
+
+        $query = 'SELECT * FROM users where username=? and password=PASSWORD(?)';
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $password);
+
+        $stmt->execute();
+        //execute query
+        return $stmt->rowCount();
+    }
 
 
 

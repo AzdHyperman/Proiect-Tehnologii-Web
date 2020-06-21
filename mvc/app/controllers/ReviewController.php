@@ -10,19 +10,30 @@ class ReviewController extends Controller{
     public $conn;
     public $table = 'reviews';
     public $review;
+    private $url;
     //initializez si invoc(=apelez met care trebe) modelul, 
 
-    public function __construct(){}
+    public function __construct(){
+        $this->url = $_REQUEST;
+        //print_r($url);
+        //$query = parse_url($url, PHP_URL_QUERY);
+        //parse_str($query, $this->query_arr);
+        //var_dump($this->query_arr);
+    }
 
     public function setReview($body,$title,$book,$user){
         $this->review = new Review($body,$title,$book,$user);
     }
 
     public function index(){
+            
             $this->view('reviews',null);
     }
 
     public function prepPage(){
+        if($this->review === null){
+            $this->setReview(null,null,null,null);
+        }
             $a=new Author(null);
             $authors = $a->getAuthors();
             //print_r($authors[0]->name);
@@ -30,11 +41,9 @@ class ReviewController extends Controller{
             $publishingHouses= $ph->getPublishingHouses();
 
             $reviews = array();
-            $reviews['reviews']=array($this->getReviews());
-            $reviews['authors']=array($authors);
-            $reviews['publishingHouses']=array($publishingHouses);
-            //array_push($reviews->authors,$authors);
-            //array_push($reviews->publishingHouses,$publishingHouses);
+            $reviews['reviews'] = array($this->review->getReviews());
+            $reviews['authors'] = array($authors);
+            $reviews['publishingHouses'] = array($publishingHouses);
             return $reviews;
     }
 
@@ -43,7 +52,7 @@ class ReviewController extends Controller{
             if($this->review === null){
                 $this->review = new Review(null,null,null,null,null,null,null);
             }
-            return $this->review->getReviews();
+            $this->review->getReviews();
             //$this->view('reviews',null);
         }
         catch (PDOException $e) {
@@ -56,6 +65,7 @@ class ReviewController extends Controller{
         if($this->review === null){
             $this->setReview(null,null,null,null,null,null,null,null);
         }
+        
         $this->review->id = $id;//isset($_GET['id'])? $_GET['id']:die();
 
         //get review
@@ -70,7 +80,7 @@ class ReviewController extends Controller{
         }
         else{
             echo json_encode(
-                array('message'=> 'User does not exist')
+                array('message'=> 'Review does not exist')
             ); //return din nou?
         }
     }
@@ -186,8 +196,70 @@ class ReviewController extends Controller{
         
     }
 
-    public function filter($bfilters,$rfilters){
+    public function filter(){
         $this->setReview(null,null,null,null);
+        
+        $bfilters =array();
+        $rfilters = array();
+        $result = array();
+    
+
+        if(isset($this->url["author"]))
+        {        
+                    
+            //BOOK FILTERS
+            if(isset($this->url["author"]) && !empty($this->url["author"])){
+                //$byAuthor = $bookController->getBooksBy("author_id",$this->url["author"]);
+                $filter = array(
+                    'filter' => "author_id",
+                    'value' => $this->url["author"]);
+                array_push($bfilters,$filter);
+            }
+        
+            if(isset($this->url["publishedBy"]) && !empty($this->url["publishedBy"])){
+                //$byPH = $bookController->getBooksBy("publHouse",$this->url["publishedBy"]);
+                $filter = array(
+                    'filter' => "publHouse_id",
+                    'value' => $this->url["publishedBy"]);
+                array_push($bfilters,$filter);
+            }
+        
+            if(isset($this->url["year"]) && !empty($this->url["year"])){
+                //$byYear = $bookController->getBooksByYear("year",$this->url["year"]);
+                $filter = array(
+                    'filter' => "year",
+                    'value' => $this->url["year"]);
+                array_push($bfilters,$filter);
+            }
+        
+            if(isset($this->url["book_title"]) && !empty($this->url["book_title"])){
+                //$byYear = $bookController->getBooksByYear("year",$this->url["year"]);
+                $filter = array(
+                    'filter' => "title",
+                    'value' => $this->url["book_title"]);
+                array_push($bfilters,$filter);
+            }
+        
+        
+            //REVIEW FILTERS
+            if(isset($this->url['reviewedBy']) && !empty($this->url["reviewedBy"])){
+                $filter = array(
+                    'filter' => "user_id",
+                    'value' => $this->url['reviewedBy']);
+                array_push($rfilters,$filter);
+            }
+        
+            if(isset($this->url['title']) && !empty($this->url["title"])){
+                $filter = array(
+                    'filter' => "title",
+                    'value' => $this->url['title']);
+                array_push($rfilters,$filter);
+            }
+        }
+        // print_r($this->url);
+        // print_r($rfilters);
+        // print_r($bfilters);
+        
         return $this->review->filter($bfilters,$rfilters);
     }
 

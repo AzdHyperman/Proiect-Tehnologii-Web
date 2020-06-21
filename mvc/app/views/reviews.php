@@ -7,16 +7,17 @@ $contr = new ReviewController();
 if($data === null)
     $data = $contr->prepPage();
 ?>
+    
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews</title>
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css">
-    <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
+    <link rel="stylesheet" type="text/css" href="http://localhost/bookreviewer/mvc/public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css"> -->
+    <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/reviews.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/bookreviewer/mvc/public/styles/reviews.css">
     <link rel="stylesheet" type="text/css" href="../public/styles/reviews400.css">
     
 </head>
@@ -48,7 +49,7 @@ if($data === null)
             
             <label for="author">Author</label>
             <select id="author" name="author">
-                <option>-</option>
+                <option></option>
                 <?php
                 for($i=0;$i<count($data['authors'][0]);$i++){
                     echo "<option>" . $data['authors'][0][$i]['name'] . "</option>";
@@ -58,7 +59,7 @@ if($data === null)
 
             <label for="publishedBy">Published by</label>
             <select id="publishedBy" name="publishedBy">
-                <option >-</option>
+                <option ></option>
                 <?php
                 $html="";
                 for($i=0;$i<count($data['publishingHouses'][0]);$i++){
@@ -70,7 +71,7 @@ if($data === null)
 
             <label for="year">Year</label>
             <select id="year" name="year">
-                <option >-</option>
+                <option ></option>
                 <option value="1990">1990</option>
                 <option value="1995">1995</option>
                 <option value="1998">1998</option>
@@ -94,7 +95,13 @@ if($data === null)
             
         <div id="container" class="articleContainer">
             <?php 
-                if($data['reviews'] !== null){
+            //print_r($data);
+            //print_r($_REQUEST);
+            //print_r($_SERVER);
+            $contr2=new ReviewController();
+            $data2=$contr2->filter();
+            print_r($data2);
+                if($data['reviews'][0] !== null){
                     //print_r($data['reviews'][0][0]);
                     foreach($data['reviews'][0] as $review){
                         $book = new Book(null,null,null,null,null);
@@ -110,7 +117,7 @@ if($data === null)
                         echo '<div class="articlePreview">';
                         echo '<img alt="' . $review['title'] . ' image" src="../../mvc/public/images/Books-icon.png" >
                         <header>
-                            <h2><a href="ReviewController/'.$review['id'].'">'.$review['title'].'</a></h2>
+                            <h2><a href="reviews/getReview/'.$review['id'].'">'.$review['title'].'</a></h2>
                             <h4>for ' . $str . '</h4>
                         </header>
                         <p>' . substr($review['body'],0,250).'...' . '</p>
@@ -128,6 +135,7 @@ if($data === null)
                 else echo '<h2> No reviews found <h2>';
             ?>
         </div> 
+
 
         <aside>
             <div class="asideTemplate">
@@ -173,6 +181,8 @@ if($data === null)
         </aside>
 
     </main>
+
+    <script src="../app/js/rev.js"></script>
 
 </body>
 </html>
