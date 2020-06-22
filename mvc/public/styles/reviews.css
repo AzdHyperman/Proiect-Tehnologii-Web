@@ -1,0 +1,131 @@
+/*------------------- COLORS ------------------*/
+ /* 
+  #e1e289 galben deschis
+  #99AA38 verde maslina
+  #d5d833 galben-verziu pt hover link-uri
+  #14591D verde inchis-brad
+  #eee0ba7a maro-transparent
+ */
+
+body{
+    background-color: #99AA38;
+}
+
+aside{
+    display: flex;
+    float:right;
+    position:sticky;
+    top:0;
+    max-height: scroll;
+    width:fit-content;
+    max-width:30%;
+}
+.asideTemplate{
+    padding:0.5em;
+    border-radius:1em;
+    background-color: #eee0ba7a;
+    margin:0.5em;
+    overflow-wrap: break-word;
+    width:fit-content;
+}
+
+.asideTemplate #title{
+    font: bolder 1em Arial;
+    color: #14591D;
+    margin:0 auto;
+    text-align: center;
+}
+
+.asideTemplate .articlePreview{
+    border-radius: 1em;
+    border-style: outset;
+    border-color:#eee0ba7a;
+    border-width: 2px;
+    padding:1em;
+    font:normal 1em Arial;
+}
+
+.asideTemplate header{
+    margin:0 auto;
+    font:normal 1em Arial;
+}
+
+.asideTemplate h3{
+    font: normal 1em Arial;
+    margin:0 auto;
+}
+
+.asideTemplate p{
+    font: normal 0.7em Arial;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.asideTemplate :any-link{
+    color:rgb(100, 114, 23);
+    text-decoration: none;
+    font:bold 1em Arial;
+}
+
+.articleContainer{
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    margin:0px auto; 
+    font-family: Arial;
+}
+
+.articleContainer :any-link{
+    text-decoration: none;
+    color:#14591D;
+    font:bold 1em Arial;
+}
+
+.articleContainer .articlePreview{
+    background-color: #e1e289;
+    width: 30em;
+    height: fit-content;
+    margin: 0.5em;
+    border-radius: 1em;
+    padding:0.5em;
+    overflow: hidden;
+}
+
+.articlePreview img{
+    background-color: #eee0ba7a;
+    margin: 0.5em;
+    width:7em;
+    height:6em;
+    float:left;
+}
+
+.articlePreview footer{
+    float:left;
+}
+
+.articlePreview h3 p{
+    float:left;
+    margin:0 auto;
+    overflow-wrap: break-word;   
+}
+
+
+h2{
+    margin:0px auto;
+    overflow-wrap: break-word;
+}
+
+h4{
+    margin:0.3em 1em;
+}
+
+h5{
+    margin: 0px auto;
+}
+
+#rating{
+    font:normal 1em Arial;
+}
+
