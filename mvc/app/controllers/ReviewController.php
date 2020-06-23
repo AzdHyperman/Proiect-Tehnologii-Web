@@ -41,9 +41,9 @@ class ReviewController extends Controller{
             $publishingHouses= $ph->getPublishingHouses();
 
             $reviews = array();
-            $reviews['reviews'] = array($this->review->getReviews());
-            $reviews['authors'] = array($authors);
-            $reviews['publishingHouses'] = array($publishingHouses);
+            $reviews['reviews'] = $this->review->getReviews();
+            $reviews['authors'] = $authors;
+            $reviews['publishingHouses'] = $publishingHouses;
             return $reviews;
     }
 
@@ -197,6 +197,7 @@ class ReviewController extends Controller{
     }
 
     public function filter(){
+        //print_r($this->url);
         $this->setReview(null,null,null,null);
         
         $bfilters =array();
@@ -260,7 +261,7 @@ class ReviewController extends Controller{
         // print_r($rfilters);
         // print_r($bfilters);
         
-        return $this->review->filter($bfilters,$rfilters);
+        $this->view('reviews',$this->review->filter($bfilters,$rfilters));
     }
 
 

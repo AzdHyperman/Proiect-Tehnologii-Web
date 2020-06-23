@@ -4,9 +4,13 @@
 require_once (__DIR__."/../controllers/ReviewController.php");
 require_once (__DIR__."/../models/Book.php");
 $contr = new ReviewController();
-if($data === null)
+$data2=$data;
+if(!isset($data['authors']) || !isset($data['publishingHouses']))
     $data = $contr->prepPage();
-
+if(isset($data2['reviews']) && $data2['reviews'] !== null){
+    $data['reviews']=null;
+    $data['reviews']=$data2['reviews'];
+}
 ?>
     
 <html lang="en">
@@ -15,7 +19,7 @@ if($data === null)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews</title>
     <link rel="stylesheet" type="text/css" href="http://localhost/bookreviewer/mvc/public/styles/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css"> -->
+    <link rel="stylesheet" type="text/css" href="http://localhost/bookreviewer/mvc/public/styles/navbar700.css">
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="http://localhost/bookreviewer/mvc/public/styles/reviews.css">
@@ -36,7 +40,7 @@ if($data === null)
     <main>
         <header>
         
-        <form method="GET" action="filter_reviews.php">
+        <form method="GET" action="filter">
             <label > Filter by book </label><br>
 
             <label for="book_title">Title</label>
@@ -48,8 +52,8 @@ if($data === null)
             <select id="author" name="author">
                 <option></option>
                 <?php
-                for($i=0;$i<count($data['authors'][0]);$i++){
-                    echo "<option>" . $data['authors'][0][$i]['name'] . "</option>";
+                for($i=0;$i<count($data['authors']);$i++){
+                    echo "<option>" . $data['authors'][$i]['name'] . "</option>";
                 }
                 ?>
             </select>
@@ -59,8 +63,8 @@ if($data === null)
                 <option ></option>
                 <?php
                 $html="";
-                for($i=0;$i<count($data['publishingHouses'][0]);$i++){
-                        $html=$html."<option>".$data['publishingHouses'][0][$i]['name']."</option>";
+                for($i=0;$i<count($data['publishingHouses']);$i++){
+                        $html=$html."<option>".$data['publishingHouses'][$i]['name']."</option>";
                     }
                     echo $html;
                 ?>
@@ -91,15 +95,10 @@ if($data === null)
             
         <div id="container" class="articleContainer">
             <?php 
-            //print_r($data);
-            //print_r($_REQUEST);
-            //print_r($_SERVER);
-            $contr2=new ReviewController();
-            $data2=$contr2->filter();
-            //print_r($data2);
+            
                 if($data['reviews'] !== null){
                     //print_r($data['reviews'][0][0]);
-                    foreach($data['reviews'][0] as $review){
+                    foreach($data['reviews'] as $review){
                         $book = new Book(null,null,null,null,null);
                         $str = "";
                         if($review['book_id'] > 0) {
@@ -111,7 +110,7 @@ if($data === null)
 
                         
                         echo '<div class="articlePreview">';
-                        echo '<img alt="' . $review['title'] . ' image" src="../../mvc/public/images/Books-icon.png" >
+                        echo '<img alt="' . $review['title'] . ' image" src="../../public/images/Books-icon.png" >
                         <header>
                             <h2><a href="reviews/getReview/'.$review['id'].'">'.$review['title'].'</a></h2>
                             <h4>for ' . $str . '</h4>

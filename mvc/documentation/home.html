@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <title>Scholarly</title>
+  <link rel="stylesheet" type="text/css" href="https://w3c.github.io/scholarly-html/css/scholarly.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8"/>
+</head>
+<body>
+   <header>
+       <h1>Obis Documentation</h1>
+   </header>
+    <section typeof="sa:Authors" class="main_container">
+        <h2>1. Team information</h2>
+        <ul>
+            <li>
+                <h3>Authors</h3>
+                <ul>
+                    <li>Boghiu Georgiana</li>
+                    <li>Vasilescu Andrei</li>
+                    <li>Taga Stefan Razvan</li>
+                </ul>
+            </li>
+            <li>
+                <h3>Faculty</h3>
+                <p>Faculty of Computer Science Iasi, Romania</p>
+            </li>
+            <li>
+                <h3>Year and group</h3>
+                <p>Year 2, group A3 and group A4</p>
+            </li>
+        </ul>
+    </section>
+    <section typeof="sa:Abstract" class="main_container">
+        <h2>2. Abstract</h2>
+        <p>
+            Scholarly HTML is a domain-specific rich document format built entirely on open standards that enables the interoperable exchange of scholarly articles in a manner that is compatible with off-the-shelf browsers. This document describes how Scholarly HTML works and how it is encoded.
+        </p>
+    </section>
+    <section typeof="sa:Introduction" class="main_container">
+        <h2>3. Project </h2>
+        <ul>
+            <li>
+                <h3> Title </h3>
+                <p>Book reviewer</p>
+            </li>
+            <li>
+                <h3> Description</h3>
+                <p>
+                    Se dorește crearea unei aplicatii Web care permite specificarea progresului și exprimarea opiniilor/adnotărilor referitoare la lecturile realizate de o persoană sau grup de persoane (e.g. o clasă de elevi, club de lectură).
+                    Sistemul va realiza managementul cărților parcurse, inclusiv organizarea lor pe diverse criterii: categorie, autor, editură, an, ediție, legături cu alte cărți înrudite etc. Se vor oferi statistici diverse ce pot fi exportate în formate deschise (minimal, CSV și DocBook). Diversele anunțuri (o persoană a recenzat o carte, a apărut un alt volum de interes, modificarea clasamentului celor mai apreciate lucrari dintr-un anumit domeniu etc.) vor fi expuse ca flux de știri RSS.
+                </p>
+            </li>
+        </ul>
+    </section>
+    <section typeof="sa:Structure" class="main_container">
+        <h2>4. Structure </h2>
+        <ul>
+            <li>
+                <h3> Frontend </h3>
+                <ul>
+                    <li>
+                        <p>We created a HTML5 web application which allows users to create and publish online
+                            their own reviews about books, comment the work of others and connect with people with
+                             similar interests in literature.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>Pages</h4>
+                        <ul>
+                            <li>Home</li>
+                            <li>BookPage</li>
+                            <li>Home_user</li>
+                            <li>ProfileSettings</li>
+                            <li>Configuration</li>
+                            <li>Review</li>
+                            <li>Login</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h3> Backend</h3>
+                <ul>
+                    <li>
+                        <h4>Technologies</h4>
+                        <p>
+                            For the development of the application we used PHP on the server side. 
+                        </p>
+                    </li>
+                    <li>
+                        <h4>PHP Modules</h4>
+                        <ul>
+                            <li>HTTP for front to back connection</li>
+                            <li>PDO Objects</li>
+                            <li>Json</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h3>Database</h3>
+                <ul>
+                    <li>
+                        <h4>Type</h4>
+                        <p>For the database we used Mysql, MariaDB. </p>
+                    </li>
+                    <li>
+                        <h4>Database rows</h4>
+                        <ul>
+                            <li>Users</li>
+                            <li>Books</li>
+                            <li>Reviews</li>
+                            <li>Comments</li>
+                            <li>Genres</li>
+                            <li>Votes</li>
+                            <li>Authors</li>
+                            <li>Publishing Houses</li>
+                            <li>Bookgenres</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>Users Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Username</li>
+                                <li>First Name</li>
+                                <li>Last Name</li>
+                                <li>Email</li>
+                                <li>Password</li>
+                                <li>Birthday</li>
+                                <li>Gender</li>
+                            </ul>
+
+                            <h4>Books Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Author Id</li>
+                                <li>Publishing House Id</li>
+                                <li>Year</li>
+                                <li>Body</li>
+                                <li>Title</li>
+                                <li>Posting date</li>
+                            </ul>
+
+                            <h4>Reviews Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Book Id</li>
+                                <li>User Id</li>
+                                <li>Body</li>
+                                <li>Title</li>
+                                <li>Posting date</li>
+                            </ul>
+
+                            <h4>Comments Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Article Id</li>
+                                <li>User Id</li>
+                                <li>Body</li>
+                                <li>Type</li>
+                                <li>Posted at</li>
+                            </ul>
+
+                            <h4>Genres Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Name</li>
+                                <li>Parent</li>
+                            </ul>
+
+                            <h4>Votes Table Columns</h4>
+                            <ul>
+                                <li>Article Id</li>
+                                <li>Value</li>
+                                <li>User Id</li>
+                                <li>Article Type</li>
+                            </ul>
+
+                            <h4>Authors Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Name</li>
+                            </ul>
+
+                            <h4>PublishingHouses Table Columns</h4>
+                            <ul>
+                                <li>Id</li>
+                                <li>Name</li>
+                                <li>Country</li>
+                                <li>Founded</li>
+                            </ul>
+
+                            <h4>Bookgenres Table Columns</h4>
+                            <ul>
+                                <li>Book Id</li>
+                                <li>Genre Name</li>
+                            </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section typeof="sa:Application-flow" class="main_container">
+        <h2>5. Application flow</h2>
+            <ul>
+                <li>
+                    <h3>Flow</h3>
+                    <figure>
+                        <img alt="no image found" class="flow_diagram" src="FlowDiagram.png">
+                    </figure>
+                </li>
+                <li>
+                    <h3>UML diagram</h3>
+                    <figure>
+                        <img alt="no image found"  class="uml_diagram" src="UML.jpg">
+                    </figure>
+                </li>
+            </ul>
+    </section>
+    <section typeof="sa:Functionalities" class="main_container">
+        <h2>6. Interactions</h2>
+        <ul>
+            <li>
+                <h3>Users</h3>
+                <ul>
+                    <li>sign Up</li>
+                    <li>read articles</li>
+                    <li>filter article with criteria</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section typeof="sa:Ajutor" class="main_container">
+        <h2>7. External help</h2>
+        <ul>
+            <li>
+                <a href="http://localhost/phpmyadmin">PHP my admin</a>  for hosting the database.
+            </li>
+            <li>
+                <a href="https://discord.com/">Discord</a> for the record of tasks per team member.
+            </li>
+            <li>
+                <a href="https://github.com/ZaharieaR/Obis">Github</a>to publish the project
+            </li>
+        </ul>
+    </section>
+    <section typeof="sa:Teamwork" class="main_container">
+        <h2>8. Teamwork</h2>
+        <p>In order to avoid missunderstandings as we lived one near the other we decided to work together on the same PC(using peer programing) most of the time.We can't really devide the work but we will try:</p>
+        <ul>
+            <li>
+                <h3>Boghiu Georgiana</h3>
+            </li>
+            <li>
+                <h3>Vasilescu Andrei</h3>
+            </li>
+            <li>
+                <h3>Taga Stefan Razva</h3>
+            </li>
+        </ul>
+    </section>
+   
+</body>
+</html>

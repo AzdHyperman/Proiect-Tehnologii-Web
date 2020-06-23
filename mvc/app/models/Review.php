@@ -76,7 +76,7 @@ class Review{
             
             }
             //turn to json
-            print_r($reviews_arr['data']);
+            //print_r($reviews_arr['data']);
             return $reviews_arr['data'];
         }else{
             //no users
@@ -439,7 +439,7 @@ class Review{
         if($stmt->rowCount()>0){
             //users array
             $reviews_arr=array(); #date in format json
-            //$reviews_arr['data']=array(); #datele din json, fara formatul json
+            $reviews_arr['reviews']=array(); #datele din json, fara formatul json
         
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -454,7 +454,7 @@ class Review{
                 );
         
                 //push to 'data'
-                array_push($reviews_arr, $review_item);
+                array_push($reviews_arr['reviews'], $review_item);
             
             }
             //turn to json

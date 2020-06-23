@@ -356,15 +356,7 @@ class User{
         $stmt->execute();
         //execute query
         return $stmt->rowCount();
-        // if($stmt->rowCount()>0){
-        //     return false;
-        // }
-        // else{
-        //     return true;
-        // }
-        //print error if something goes wrong in execute
-        //printf('Error: %s.\n', $stmt->err);
-        //return false;
+        
 
     }
 

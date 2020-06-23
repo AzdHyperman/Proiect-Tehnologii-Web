@@ -28,7 +28,7 @@ function onClick(){
         let div=document.createElement("div");
         div.className="articlePreview";
         let img=div.createElement("img");
-        img.alt=
+        
     }
 }
         
