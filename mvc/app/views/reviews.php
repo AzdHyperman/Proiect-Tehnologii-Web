@@ -24,10 +24,10 @@ if($data === null)
 <body>
     <header>
         <div class="navbar">
-            <a class="#" href="home.php"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a class="active" href="ReviewController"><i class="fa fa-newspaper-o"></i> Reviews</a>
-            <a class="#" href="BookController"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-            <a class="#" href="home.php"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a class="#" href="home"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a class="active" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+            <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+            <a class="#" href="LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
             <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
     </header>

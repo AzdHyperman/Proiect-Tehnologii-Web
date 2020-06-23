@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="Review.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/Review.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="navbar.css">
-    <link rel="stylesheet" type="text/css" href="navbar700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/navbar700.css">
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -17,12 +16,11 @@
 
 <body>
     <div class="navbar">
-        <a class="#" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a class="#" href="#"><i class="fa fa-newspaper-o"></i> Reviews</a>
-        <a class="#" href="#"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-        <a class="#" href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-        <a class="#" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-        <a class="active" href="signUp.html"><i class="fa fa-user-plus" ></i> Sign Up</a>
+            <a class="#" href="home"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a class="active" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+            <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+            <a class="#" href="LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
     </div>
         
     <div>

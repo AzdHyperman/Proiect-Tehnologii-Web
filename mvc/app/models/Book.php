@@ -170,7 +170,9 @@ class Book{
         $db = $database->connect();
         $this->conn =$db;
 
-        $query = 'SELECT * FROM comments WHERE id_article = ? AND comments.type = "book"';  
+        $query = 'SELECT c.*,u.username FROM comments s JOIN users u 
+        ON u.id=c.user_id
+        WHERE id_article = ? AND comments.type = "book"';  
 
         $stmt = $this->conn->prepare($query);
 

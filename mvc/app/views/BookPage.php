@@ -1,77 +1,58 @@
+<?php header("Content-Type: html"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="BookPage.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/BookPage.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="navbar.css">
-    <link rel="stylesheet" type="text/css" href="navbar700.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css">
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>TITLUL PAGINII</title>
+    <title><?php echo $data[0]->title; ?></title>
 </head>
 <body>
     <div class="bookpage">
         <div class="navbar">
-            <a class="#" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a class="#" href="#"><i class="fa fa-newspaper-o"></i> Reviews</a>
-            <a class="#" href="#"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-            <a class="#" href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-            <a class="#" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-            <a class="active" href="signUp.html"><i class="fa fa-user-plus" ></i> Sign Up</a>
+        <a class="#" href="home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="#" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+        <a class="active" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+        <a class="#" href="LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
         
         <img src="book.jpg" alt="Book">
         
         <div class="info">
-            <h1> Titlu cartii </h1> 
-            <h2> Autor: Nume Autor </h2>  
-            <h2> Editura: editura </h2>  
-            <div class="rating">
-                <h2> Rating: </h2> 
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <button class="Button">Submit</button>
-            </div>         
-        </div>
-    </div>
-
+            <?php $html="";
+            $html=$html."<h1>". $data[0]->title." </h1>"; 
+            $html=$html."<h2> Autor:" .$data[0]->author->name." </h2>";
+            $html=$html."<h2> Editura:" . $data[0]->pulbHouse. "</h2>";  
+            $html=$html."<div class=\"rating\">";
+            $html=$html."    <h2> Rating:".$data[0]->rating." </h2> ";
+            $html=$html."    <button class=\"Button\">Submit</button> </div> </div> </div>";
+            echo $html;
+            ?>
 
     <div class="comments">
         <h2> Comentarii </h2>
         <strong> Comentator </strong>
         <input type="text">
         <?php
-            $user1=array("nume"=>"nume1","body"=>"comentez si eu1","data"=>"2020-05-01");
-            $user2=array("nume"=>"nume2","body"=>"comentez si eu2","data"=>"2020-05-01");
-            $user3=array("nume"=>"nume3","body"=>"comentez si eu3","data"=>"2020-05-01");
-        
-            $users_arr=array(); 
-            array_push($users_arr,$user1);
-            array_push($users_arr,$user2);
-            array_push($users_arr,$user3);
+            $users_arr = $data[0]->comments;
         
             foreach($users_arr as $users){
                 echo "<ul>";
                 echo "<br>";
-                echo $users["nume"];
+                echo $users->user_id;
                 echo "<br>";
-                echo $users["body"];
+                echo $users->body;
                 echo "<br>";
-                echo $users["data"];
-                echo "<div> <span class= 'fa fa-star checked'> </span> 
-                    <span class= 'fa fa-star checked'> </span>
-                    <span class= 'fa fa-star checked'> </span>
-                    <span class= 'fa fa-star'> </span>
-                    <span class= 'fa fa-star'> </span>
-                    </div>";
+                echo $users->data;
                 echo "</ul>";
                 echo "<br>";
             }

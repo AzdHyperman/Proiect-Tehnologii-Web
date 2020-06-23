@@ -1,6 +1,9 @@
-<?php header("Content-Type: html"); 
-?>
+
 <html>
+<?php header("Content-Type: html"); 
+include_once __DIR__."/../controllers/BookController.php";
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +20,10 @@
 <body>
     <header>
         <div class="navbar">
-            <a class="active" href="home.php"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a class="#" href="ReviewController"><i class="fa fa-newspaper-o"></i> Reviews</a>
-            <a class="#" href="BookController"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-            <a class="#" href="home.php"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a class="active" href="home"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a class="#" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+            <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+            <a class="#" href="home"><i class="fa fa-fw fa-user"></i> Login</a>
             <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
     </header>
@@ -31,7 +34,7 @@
         <div class="articleContainer">
         <?php
             if(isset($_SESSION['LOGINstatus']) && $_SESSION['LOGINstatus']==="false" ){
-               print_r($data[0]['author_id']->name);
+               //print_r($data);
                 $books = $data;
                 $html="";
                 foreach($books as $book){
