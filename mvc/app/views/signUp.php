@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="../public/styles/signUp.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/signUp700.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/buttons.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/general.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/general700.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/signUp700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/general.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/general700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/navbar700.css">
 
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
