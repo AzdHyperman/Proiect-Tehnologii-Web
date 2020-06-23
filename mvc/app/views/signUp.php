@@ -24,7 +24,7 @@
         <a class="#" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
         <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
         <a class="#" href="LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
-        <a class="active" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
+        <a class="active" href="signUp.php"><i class="fa fa-user-plus" ></i> Sign Up</a>
     </div>
     </header>
     

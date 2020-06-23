@@ -18,17 +18,19 @@
 <body>
     <div class="bookpage">
         <div class="navbar">
-        <a class="#" href="../../home"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a class="#" href="../../reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+        <a class="#" href="../../home.php"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="#" href="../../reviews.php"><i class="fa fa-newspaper-o"></i> Reviews</a>
         <a class="active" href="../../freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
         <a class="#" href="../../LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
-        <a class="#" href="../../signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
+        <a class="#" href="../../signUp.php"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
-        
+        <br>
+    <button class="LogOut">Log Out</button>
         <img src="book.jpg" alt="Book">
         
         <div class="info">
-            <?php $html="";
+            <?php 
+            $html="";
             $html=$html."<h1>". $data[0]->title." </h1>"; 
             $html=$html."<h2> Autor:" .$data[0]->author->name." </h2>";
             $html=$html."<h2> Editura:" . $data[0]->publHouse->name. "</h2>";  
@@ -60,33 +62,32 @@
         ?>
     </div>
 
-    <div class="company">
-        <p> <strong> COMPANY </strong> </p>
-        <p>About us</p>
-        <p>Careers</p>
-        <p>Terms</p>
-        <p>Privacy</p>
-        <p>Help</p>
-    </div>
+    <div class="footer">
+    <ul class="between">
+    <li><h3>Company</h3>
+    <p>About us</p>
+    <p>Careers</p>
+    <p>Terms</p>
+    <p>Privacy</p>
+    <p>Help</p>
+    </li>
+    <li><h3>Contact Us</h3>
+      <p>Facebook</p>
+      <p>Instagram</p>
+      <p>Contact</p>
+    </li>
+    <li><h3>Made by</h3>
+      <p>Boghiu Georgiana Viorica</p>
+      <p>Taga Stefan Razvan</p>
+      <p>Vasilescu Andrei</p>
+    </li>
+    
+  </ul>
+  <p class="Copyright">BookReviewer.net(not online yet) is a property of BookReviewer, LLC. ©2020 All Rights Reserved.</p>
+  
+</div>
 
-    <div class="WorkWithUs">
-        <p> <strong> Work With Us </strong> </p>
-        <p>Authors</p>
-        <p>Adventise</p>
-        <p>Authors & ads blog</p>
-        <p>API</p>
-    </div>
-
-    <div class="made">
-        <p> <strong> Made </strong> </p>
-        <p>Made is 2020</p>
-        <p>Boghiu Georgiana</p>
-        <p>Vasilescu Andrei</p>
-        <p>Taga Stefan Razvan</p>
-    </div>
-
-    <br>
-    <button class="LogOut">Log Out</button>
+    
 
 </body>
 </html>

@@ -41,7 +41,7 @@ if(isset($data2['reviews']) && $data2['reviews'] !== null){
         <header>
         
         <form method="GET" action="filter">
-            <label > Filter by book </label><br>
+            <label> Filter by book </label><br>
 
             <label for="book_title">Title</label>
             <input id="book_title" name="book_title" type="text" placeholder="book title...">
@@ -60,7 +60,7 @@ if(isset($data2['reviews']) && $data2['reviews'] !== null){
 
             <label for="publishedBy">Published by</label>
             <select id="publishedBy" name="publishedBy">
-                <option ></option>
+                <option></option>
                 <?php
                 $html="";
                 for($i=0;$i<count($data['publishingHouses']);$i++){
