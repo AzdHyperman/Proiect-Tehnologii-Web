@@ -6,6 +6,7 @@ require_once (__DIR__."/../models/Book.php");
 $contr = new ReviewController();
 if($data === null)
     $data = $contr->prepPage();
+
 ?>
     
 <html lang="en">
@@ -34,12 +35,8 @@ if($data === null)
 
     <main>
         <header>
-        <!-- mai am nevoie??? -->
-        <label for="search" ></label>
-        <input id="search" type="text" placeholder="Search" name="search">
-
         
-        <form method="GET">
+        <form method="GET" action="filter_reviews.php">
             <label > Filter by book </label><br>
 
             <label for="book_title">Title</label>
@@ -89,9 +86,8 @@ if($data === null)
 
             <label for="title"> Title </label>
             <input id="title" name="title" type="text" placeholder="review title...">
-            <!-- <input type="submit" id="find" name="find" value="Find"> -->
-            <button id="find"> Find </button>
-            </form>
+            <input type="submit" id="find" name="find" value="Find">
+            <!-- <button id="find"> Find </button> -->
             
         <div id="container" class="articleContainer">
             <?php 
@@ -100,8 +96,8 @@ if($data === null)
             //print_r($_SERVER);
             $contr2=new ReviewController();
             $data2=$contr2->filter();
-            print_r($data2);
-                if($data['reviews'][0] !== null){
+            //print_r($data2);
+                if($data['reviews'] !== null){
                     //print_r($data['reviews'][0][0]);
                     foreach($data['reviews'][0] as $review){
                         $book = new Book(null,null,null,null,null);
@@ -135,7 +131,7 @@ if($data === null)
                 else echo '<h2> No reviews found <h2>';
             ?>
         </div> 
-
+        </form>
 
         <aside>
             <div class="asideTemplate">
@@ -182,7 +178,7 @@ if($data === null)
 
     </main>
 
-    <script src="../app/js/rev.js"></script>
+    <!-- <script src="../app/js/rev.js"></script> -->
 
 </body>
 </html>

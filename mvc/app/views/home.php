@@ -1,8 +1,6 @@
 
 <html>
 <?php header("Content-Type: html"); 
-include_once __DIR__."/../controllers/BookController.php";
-
 ?>
 <head>
     <meta charset="UTF-8">

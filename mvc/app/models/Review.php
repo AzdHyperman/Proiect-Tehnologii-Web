@@ -432,7 +432,7 @@ class Review{
                 }
             }
         }
-        print_r($stmt);
+        //print_r($stmt);
 
         $stmt->execute();
     

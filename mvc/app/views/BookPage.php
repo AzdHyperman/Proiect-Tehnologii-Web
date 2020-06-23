@@ -18,11 +18,11 @@
 <body>
     <div class="bookpage">
         <div class="navbar">
-        <a class="#" href="home"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a class="#" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
-        <a class="active" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-        <a class="#" href="LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
-        <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
+        <a class="#" href="../../home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="#" href="../../reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+        <a class="active" href="../../freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+        <a class="#" href="../../LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a class="#" href="../../signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
         
         <img src="book.jpg" alt="Book">
@@ -31,7 +31,7 @@
             <?php $html="";
             $html=$html."<h1>". $data[0]->title." </h1>"; 
             $html=$html."<h2> Autor:" .$data[0]->author->name." </h2>";
-            $html=$html."<h2> Editura:" . $data[0]->pulbHouse. "</h2>";  
+            $html=$html."<h2> Editura:" . $data[0]->publHouse->name. "</h2>";  
             $html=$html."<div class=\"rating\">";
             $html=$html."    <h2> Rating:".$data[0]->rating." </h2> ";
             $html=$html."    <button class=\"Button\">Submit</button> </div> </div> </div>";
@@ -48,11 +48,11 @@
             foreach($users_arr as $users){
                 echo "<ul>";
                 echo "<br>";
-                echo $users->user_id;
+                echo $users->user->username;
                 echo "<br>";
                 echo $users->body;
                 echo "<br>";
-                echo $users->data;
+                echo $users->posted_at;
                 echo "</ul>";
                 echo "<br>";
             }
