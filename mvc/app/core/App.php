@@ -7,13 +7,9 @@ class App{
     protected $params = [];
 
     public function __construct(){
-        //print_r($_GET);
         
         $url = $this->parseUrl();
 
-        /*$database = new Database();
-        $db = $database->connect();
-        */
 
         if(isset($url[0])){
             if(file_exists('../app/controllers/' . $url[0] . '.php'))

@@ -89,18 +89,46 @@ div.made{
     margin-left: 7em;
 }  
 
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(24, 221, 123);
-    color: white;
-    text-align: center;
-}
+
 
 div.LogOut{
     margin-bottom: 1em;
     position: relative;
+}
+.footer
+{
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #99AA38;
+    color: white;
+    text-align: center;
+}
+
+.between
+{
+    display:flex;
+    justify-content:space-around;
+    flex-direction: row;
+    margin-left: -1em;
+    margin-right: 1em;
+}
+.between li
+{
+    text-decoration: none;
+    display:flex;
+    justify-content: space-around;
+    flex-direction:column;
+   margin-top:2em;
+   margin-bottom: 4em;
+    
+
+}
+
+
+.Copyright
+{
+    text-align: center;
 }
 

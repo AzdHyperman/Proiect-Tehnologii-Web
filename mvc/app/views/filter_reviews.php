@@ -67,10 +67,10 @@ if(isset($_GET["find"]))
     $result['reviews'] = null;
     $result['reviews'] = $reviewController->filter($bfilters,$rfilters);
 
-    echo $result;
+    //echo $result;
 
-    //print_r($result);
+    print_r($result);
 
-    //$reviewController->view('reviews',$result);
+    $reviewController->view('reviews',$result);
     
 }

@@ -1,6 +1,7 @@
+
+<html>
 <?php header("Content-Type: html"); 
 ?>
-<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,10 +19,10 @@
     <header>
         <div class="navbar">
             <a class="active" href="home.php"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a class="#" href="ReviewController"><i class="fa fa-newspaper-o"></i> Reviews</a>
-            <a class="#" href="BookController"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-            <a class="#" href="home.php"><i class="fa fa-fw fa-user"></i> Login</a>
-            <a class="#" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
+            <a class="#" href="reviews.php"><i class="fa fa-newspaper-o"></i> Reviews</a>
+            <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+            <a class="#" href="Login.html"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a class="#" href="signUp.php"><i class="fa fa-user-plus" ></i> Sign Up</a>
         </div>
     </header>
 
@@ -31,12 +32,12 @@
         <div class="articleContainer">
         <?php
             if(isset($_SESSION['LOGINstatus']) && $_SESSION['LOGINstatus']==="false" ){
-               print_r($data[0]['author_id']->name);
+               //print_r($data);
                 $books = $data;
                 $html="";
                 foreach($books as $book){
                     $html = $html . "<br><div class='articlePreview'>";
-                    $html = $html . "<a href='#'>";
+                    $html = $html . "<a href='BookController/item/".$book['id']."'>";
                     $html = $html . "<img src='" . __DIR__ . "/../../public/images/Books-icon.png' alt='" . $book['title'] . "' > <br>";
                     $html = $html . "<h4>" . $book['title'] . "</h4>";
                     $html = $html . "<h5>by " . $book['author_id']->name . "</h5>";

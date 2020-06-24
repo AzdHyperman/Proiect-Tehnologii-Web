@@ -102,7 +102,7 @@ class User{
         if($row){
         //set properties
         $this->username=$row['username'];
-        $this->password = $row['password'];
+        $this->password = null;
         $this->first_name=$row['first_name'];
         $this->last_name=$row['last_name'];
         $this->email=$row['email'];
@@ -356,19 +356,28 @@ class User{
         $stmt->execute();
         //execute query
         return $stmt->rowCount();
-        // if($stmt->rowCount()>0){
-        //     return false;
-        // }
-        // else{
-        //     return true;
-        // }
-        //print error if something goes wrong in execute
-        //printf('Error: %s.\n', $stmt->err);
-        //return false;
+        
 
     }
 
     //search stuff
+
+    public function login($password,$username){
+        $database = new Database();
+        $db = $database->connect();
+        $this->conn = $db;
+
+        $query = 'SELECT * FROM users where username=? and password=PASSWORD(?)';
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindParam(1, $username);
+        $stmt->bindParam(2, $password);
+
+        $stmt->execute();
+        //execute query
+        return $stmt->rowCount();
+    }
 
 
 

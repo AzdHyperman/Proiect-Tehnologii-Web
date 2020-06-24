@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="../public/styles/signUp.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/signUp700.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/buttons.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/general.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/general700.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../public/styles/navbar700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/signUp700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/general.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/general700.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../public/styles/navbar700.css">
 
     <!-- libraria pentru icon-urile de la meniu: font-awesome.min.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,11 +20,11 @@
 
     <header>
     <div class="navbar">
-        <a class="#" href="home.php"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a class="#" href="ReviewController"><i class="fa fa-newspaper-o"></i> Reviews</a>
-        <a class="#" href="BookController"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
-        <a class="#" href="home.php"><i class="fa fa-fw fa-user"></i> Login</a>
-        <a class="active" href="signUp"><i class="fa fa-user-plus" ></i> Sign Up</a>
+        <a class="#" href="home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="#" href="reviews"><i class="fa fa-newspaper-o"></i> Reviews</a>
+        <a class="#" href="freshOffTheShelves.html"><i class="fa fa-fw fa-book"></i> Fresh off the shelves</a>
+        <a class="#" href="LogIn.html"><i class="fa fa-fw fa-user"></i> Login</a>
+        <a class="active" href="signUp.php"><i class="fa fa-user-plus" ></i> Sign Up</a>
     </div>
     </header>
     

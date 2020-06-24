@@ -33,7 +33,6 @@ class BookController extends Controller{
             
         }catch(PDOException $e){
             echo $e->getMessage();
-            $this->view('signUp');
         }
     }
 
@@ -51,13 +50,13 @@ class BookController extends Controller{
 
         $book_arr = array($this->book);
         //make json
-        print_r($book_arr); //return $book_arr;
+        $this->view('BookPage',$book_arr); //return $book_arr;
         //nu afiseaza ok $book_arr pentru ca contine si alte obiecte decat date din BD
         }
         else{
             echo json_encode(
                 array('message'=> 'Book does not exist')
-            ); //return din nou?
+            ); 
         }
     }
 
@@ -100,7 +99,7 @@ class BookController extends Controller{
         $this->book->getBook();
         if($this->book->title !== null){
             $this->book->vote($data->value,$data->user_id);
-            print_r("cred ca e ok");
+            //print_r("cred ca e ok");
         }
         else return false;
     }

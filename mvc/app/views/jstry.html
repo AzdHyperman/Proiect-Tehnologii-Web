@@ -1,0 +1,28 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id="text"> TRYING TO MAKE THIS WORK <h2>
+</body>
+
+<script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4){
+            console.log(xhr.status);
+            if(xhr.status == 200)
+                console.log(xhr.responseText);
+
+            if(xhr.status == 404)
+                console.log("NOT FOUND!!!!");
+        }
+    };
+
+    xhr.open("GET","filter_reviews.php",true);
+    xhr.send();
+</script>

@@ -48,7 +48,7 @@ class Review{
         if($stmt->rowCount()>0){
             //users array
             $reviews_arr=array(); #date in format json
-            //$reviews_arr['data']=array(); #datele din json, fara formatul json
+            $reviews_arr['data']=array(); #datele din json, fara formatul json
         
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -72,19 +72,21 @@ class Review{
                 );
         
                 //push to 'data'
-                array_push($reviews_arr, $review_item);
+                array_push($reviews_arr['data'], $review_item);
             
             }
             //turn to json
-            return $reviews_arr;
+            //print_r($reviews_arr['data']);
+            return $reviews_arr['data'];
         }else{
             //no users
-            return null;
+            return json_encode(array("message"=>"no reviews"));
         
         }
     }
 
     public function getReview(){
+
         $database = new Database();
         $db = $database->connect();
         $this->conn =$db;
@@ -372,12 +374,13 @@ class Review{
     }
 
     public function filter($bfilters,$rfilters){
+        
         $database = new Database();
         $db = $database->connect();
         $this->conn =$db;
 
          //create query
-         $query = 'select r.* from ' . $this->table;
+         $query = 'select r.* from ' . $this->table .' r';
 
          //avem filtre de carti si/sau de review
          if(count($bfilters)>0){
@@ -385,7 +388,7 @@ class Review{
 
             //  for($i=1;$i<count($filters);$i++){
             //     $query = $query . ' OR ' . $filters[$i]["filter"] . '=? ';
-            $query = $query . ' r JOIN books b ON r.book_id = b.id WHERE b.'.$bfilters[0]["filter"].'=?';
+            $query = $query . ' JOIN books b ON r.book_id = b.id WHERE b.'.$bfilters[0]["filter"].'=?';
             for($i=1;$i<count($bfilters);$i++){
                 $query = $query . ' AND b.'. $bfilters[$i]["filter"]."=?"; 
             }
@@ -429,13 +432,14 @@ class Review{
                 }
             }
         }
+        //print_r($stmt);
 
         $stmt->execute();
     
         if($stmt->rowCount()>0){
             //users array
             $reviews_arr=array(); #date in format json
-            //$reviews_arr['data']=array(); #datele din json, fara formatul json
+            $reviews_arr['reviews']=array(); #datele din json, fara formatul json
         
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                 extract($row); 
@@ -450,7 +454,7 @@ class Review{
                 );
         
                 //push to 'data'
-                array_push($reviews_arr, $review_item);
+                array_push($reviews_arr['reviews'], $review_item);
             
             }
             //turn to json
@@ -462,7 +466,6 @@ class Review{
         
         }
     }
-
 }
 
 
